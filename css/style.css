@@ -1,0 +1,127 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+body {
+    padding: 1em;
+    display: grid;
+    grid-template-areas: 'nav' 'tab';
+    grid-template-rows: 10% auto;
+    min-height: 100vh;
+}
+#nav {
+    grid-area: nav;
+    display: flex;
+    align-items: flex-end;
+    z-index: 1;
+    padding: 0 5px;
+}
+#nav, main {
+    justify-self: center;
+    width: 100%;
+    max-width: 500px;
+}
+.radio {
+    display: none;
+}
+.label {
+    display: inline-block;
+    margin: 0 -5px;
+    padding: 5px 15px;
+    z-index: 1;
+    box-shadow: 1px 1px 2px #000;
+    border-radius: 1em 1em 0 0;
+}
+.span {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+main {
+    grid-area: tab;
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    box-shadow: 1px 1px 2px #000;
+    border-radius: 0 1em 1em 1em;
+    overflow: hidden;
+}
+.tab {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.tab1 {
+    background-color: #ccc;
+}
+.tab2 {
+    background-color: #ccf;
+}
+.tab3 {
+    background-color: #9d9;
+}
+#home_radio:checked ~ #nav #home_label,
+#home_radio:checked ~ main #home_tab {
+    z-index: 5;
+    box-shadow: 2px 2-px 2px #000;
+}
+#upload_radio:checked ~ #nav #upload_label,
+#upload_radio:checked ~ main #upload_tab {
+   z-index: 5;
+   box-shadow: 2px 2px 2px #000;
+}
+#black-box {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000e;
+    z-index: 10;
+    left: 0;
+    top: -100vh;
+    transition: 200ms;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.on {
+    top: 0 !important;
+}
+#modal {
+    background-color: #fff;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    padding: 1em;
+    border-radius: 1em;
+}
+#message {
+    position: relative;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: monospace;
+}
+#table {
+    width: 100%;
+    font-family: monospace;
+}
+#table tbody tr:nth-child(even) {
+    background-color: #0005;
+}
+#table th {
+    background-color: #000;
+    color: #fff;
+    text-transform: uppercase;
+}
+#table th,
+#table td {
+    padding: 5px 10px;
+    text-align: center;
+}

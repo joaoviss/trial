@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/7292/7292483.png" type="image/png">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/script.js" defer></script>
+</head>
+<body>
+    <div id="black-box">
+        <div id="modal">
+            <img alt="carregando" src="./img/loading.gif">
+            <span id="message">carregando...</span>
+        </div>
+    </div>
+    <input type="radio" name="r" id="home_radio" class="radio" checked>
+    <input type="radio" name="r" id="upload_radio" class="radio">
+    <nav id="nav">
+        <label for="home_radio" class="label tab1" id="home_label">
+            <span class="span"><i class="fas fa-home"></i>&nbsp;início</span>
+        </label>
+        <label for="upload_radio" class="label tab2" id="upload_label">
+            <span class="span"><i class="fas fa-upload"></i>&nbsp;upload</span>
+        </label>
+    </nav>
+    <main>
+        <div class="tab tab1" id="home_tab"></div>
+        <div class="tab tab2" id="upload_tab"></div>
+    </main>
+    <template id="template">
+        <table id="table">
+            <thead>
+                <tr>
+                    <th>data</th>
+                    <th>pressão</th>
+                    <th>freq.</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <table>
+            <tr>
+                <td>#[date]</td>
+                <td>#[sis]:#[dia]</td>
+                <td>#[freq]</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <button id="save-btn">save</button>
+                </td>
+            </tr>
+        </table>
+    </template>
+</body>
+</html>
