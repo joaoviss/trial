@@ -4,7 +4,9 @@ const radios = document.querySelectorAll('.radio');
 const template = document.querySelector('#template');
 const [homeTab, uploadTab] = document.querySelectorAll('.tab');
 const [table, table2] = template.content.querySelectorAll('table');
-const tbody = table.querySelector('tbody');
+const [thead, tbody, tfoot] = table.children;
+const [row, createRow, saveRow] = table2.querySelectorAll('tr');
+
 
 addEventListener('DOMContentLoaded', async () => {
     await home();
@@ -21,21 +23,26 @@ async function home() {
     blackBox.classList.add('on');
     let response = await fetch(url);
     let {data} = await response.json();
-    tbody.innerHTML = '';
-    data.forEach(object => {
-           tbody.appendChild(createRows(object));
-    });
+    for (let part in [tbody, tfoot]) {
+        part.innerHTML = '';
+    }
     homeTab.appendChild(table);
+    data.forEach(async (object) => {
+        tbody.appendChild(await fillRow(object));
+    });
+    tfoot.appendChild(createRow);
+    tfoot.appendChild(saveRow);
     blackBox.classList.remove('on');
 }
 
-function upload() {
+function upload() {}
 
-}
-
-function createRows(object) {
-    let row = Object.entries(object).reduce((text, [key, value]) => {
-        return text.replace(`#[${key}]`, value);
-    }, table2.outerHTML);
-    return new DOMParser().parseFromString(row, 'text/html').querySelectorAll('tr')[0];
+function fillRow(object) {
+    return new Promise((resolve, reject) => {
+        let row = Object.entries(object).reduce((text, [key, value]) => {
+            return text.replace(`#[${key}]`, value);
+        }, table2.outerHTML);
+        let tr = new DOMParser().parseFromString(row, 'text/html').querySelectorAll('tr')[0];
+        resolve(tr);
+    });
 }
