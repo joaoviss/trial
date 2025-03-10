@@ -7,10 +7,22 @@
 }
 body {
     padding: 1em;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+main {
+    width: 100%;
+    max-width: 500px;
+    position: relative;
     display: grid;
     grid-template-areas: 'nav' 'tab';
-    grid-template-rows: 10% auto;
-    min-height: 100vh;
+    grid-template-rows: 3em auto;
+}
+.radio {
+    display: none;
 }
 #nav {
     grid-area: nav;
@@ -19,13 +31,16 @@ body {
     z-index: 1;
     padding: 0 5px;
 }
-#nav, main {
+#tabs {
+    grid-area: tab;
+    z-index: 2;
+    box-shadow: 1px 1px 2px #000;
+    border-radius: 0 1em 1em 1em;
+    overflow: hidden;
+}
+#nav, #tabs {
     justify-self: center;
     width: 100%;
-    max-width: 500px;
-}
-.radio {
-    display: none;
 }
 .label {
     display: inline-block;
@@ -39,18 +54,11 @@ body {
     text-transform: uppercase;
     font-weight: bold;
 }
-main {
-    grid-area: tab;
-    position: relative;
-    z-index: 2;
-    height: 100%;
-    box-shadow: 1px 1px 2px #000;
+.tab {
+    /* height: 0; */
     border-radius: 0 1em 1em 1em;
     overflow: hidden;
-}
-.tab {
     width: 100%;
-    height: 100%;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -58,21 +66,19 @@ main {
     justify-content: flex-start;
 }
 .tab1 {
-    background-color: #ccc;
+    
+    background-color: #9d9;
 }
 .tab2 {
     background-color: #ccf;
 }
-.tab3 {
-    background-color: #9d9;
-}
 #home_radio:checked ~ #nav #home_label,
-#home_radio:checked ~ main #home_tab {
+#home_radio:checked ~ #tabs #home_tab {
     z-index: 5;
-    box-shadow: 2px 2-px 2px #000;
+    box-shadow: 2px 2px 2px #000;
 }
 #upload_radio:checked ~ #nav #upload_label,
-#upload_radio:checked ~ main #upload_tab {
+#upload_radio:checked ~ #tabs #upload_tab {
    z-index: 5;
    box-shadow: 2px 2px 2px #000;
 }
@@ -109,6 +115,7 @@ main {
     font-family: monospace;
 }
 #table {
+ 
     width: 100%;
     font-family: monospace;
 }
@@ -125,6 +132,14 @@ main {
     padding: 5px 10px;
     text-align: center;
 }
+.create {
+    padding: 5px 10px;
+    width: 100%;
+    border: none;
+}
+.press {
+    width: 20%;
+}
 #btn {
     width: 100%;
     background-color: #f00;
@@ -133,4 +148,13 @@ main {
     font-weight: bold;
     text-transform: uppercase;
     border: none;
+    margin: 0;
+}
+#file-input {
+    display: none;
+}
+#file-span {
+    width: 100%;
+    height: 100%;
+    display: block;
 }

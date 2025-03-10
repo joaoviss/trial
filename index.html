@@ -15,42 +15,52 @@
             <span id="message">carregando...</span>
         </div>
     </div>
-    <input type="radio" name="r" id="home_radio" class="radio" checked>
-    <input type="radio" name="r" id="upload_radio" class="radio">
-    <nav id="nav">
-        <label for="home_radio" class="label tab1" id="home_label">
-            <span class="span"><i class="fas fa-home"></i>&nbsp;início</span>
-        </label>
-        <label for="upload_radio" class="label tab2" id="upload_label">
-            <span class="span"><i class="fas fa-upload"></i>&nbsp;upload</span>
-        </label>
-    </nav>
     <main>
-        <div class="tab tab1" id="home_tab"></div>
-        <div class="tab tab2" id="upload_tab"></div>
+        <input type="radio" name="r" id="home_radio" class="radio" checked>
+        <input type="radio" name="r" id="upload_radio" class="radio">
+        <nav id="nav">
+            <label for="home_radio" class="label tab1" id="home_label">
+                <span class="span"><i class="fas fa-home"></i>&nbsp;início</span>
+            </label>
+            <label for="upload_radio" class="label tab2" id="upload_label">
+                <span class="span"><i class="fas fa-upload"></i>&nbsp;upload</span>
+            </label>
+        </nav>
+        <section id="tabs">
+            <div class="tab tab1" id="home_tab"></div>
+            <div class="tab tab2" id="upload_tab"></div>
+        </section>
     </main>
     <template id="template">
         <table id="table">
-            <thead>
-                <tr>
-                    <th>data</th>
-                    <th>pressão</th>
-                    <th>freq.</th>
-                </tr>
-            </thead>
+            <thead></thead>
             <tbody></tbody>
             <tfoot></tfoot>
         </table>
         <table>
+            <tr>
+                <th>data</th>
+                <th>pressão</th>
+                <th>freq.</th>
+            </tr>
             <tr>
                 <td>#[date]</td>
                 <td>#[sis]:#[dia]</td>
                 <td>#[freq]</td>
             </tr>
             <tr>
-                <td><input type="date" name="" id=""></td>
-                <td><input type="number" name="" id=""></td>
-                <td><input type="number" name="" id=""></td>
+                <th colspan="3">
+                    <label for="file-input">
+                        <span id="file-span">Adicione um arquivo</span>
+                    </label>
+                    <input type="file" id="file-input" accept="text/csv">
+                </th>
+           </tr>
+            <tr>
+                <td><input type="date" class="create" id="date"></td>
+                <td><input type="number" class="press create" id="sis">&nbsp;:
+                <input type="number" class="press create" id="dia"></td>
+                <td><input type="number" class="create" id="freq"></td>
             </tr>
             <tr>
                 <td colspan="3"><button id="btn">salvar</button></td>
